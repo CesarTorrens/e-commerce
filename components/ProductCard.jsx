@@ -7,7 +7,6 @@ import MyContext from "../context/MyContext";
 export function ProductCard(props) {
   const { img, price, title, category, id, categoryId, categoryImg, cant } =
     props;
-  const { totalPayment } = useContext(MyContext);
   const [quantity, setQuantity] = React.useState(1);
 
   return (

@@ -5,6 +5,7 @@ import MyContext from "../context/MyContext";
 import ShoppingCart from "./icons/ShoppingCart";
 import { Slide } from "./Slide";
 import CartItem from "./CartItem";
+import Dropdown from "./Dropdown";
 
 export function Navbar() {
   const { user, category, callUser, showCart, cart } = useContext(MyContext);
@@ -17,7 +18,7 @@ export function Navbar() {
 
   React.useEffect(() => {
     const calculateWindowSize = () => {
-      if (window.screen.width > 768) {
+      if (window.innerWidth > 768) {
         setIsMobile(false);
       } else {
         setIsMobile(true);
@@ -41,6 +42,7 @@ export function Navbar() {
       calculateScrollTop();
     });
   }, [scrollCheck]);
+  console.log(isMobile);
   return (
     <div className="w-full bg-slate-800 fixed z-40">
       <header className="py-5 px-3 sm:px-10 max-w-screen-2xl m-auto flex flex-col justify-between">
@@ -50,9 +52,11 @@ export function Navbar() {
               e-commerce
             </Link>
             <div className="flex items-center gap-4">
-              <p className="text-white text-lg font-bold">
-                Hello! {user[0]?.name}{" "}
-              </p>
+              {!isMobile && (
+                <p className="text-white text-lg font-bold">
+                  Hello! {user[0]?.name}{" "}
+                </p>
+              )}
               <Avatar img={user[0]?.avatar} name={user[0]?.name} />
               <button
                 onClick={showCart}
@@ -65,7 +69,7 @@ export function Navbar() {
               </button>
             </div>
           </div>
-          {!scrollCheck && (
+          {!scrollCheck && !isMobile && (
             <div className="flex gap-3">
               {category?.map((category) => (
                 <Link
@@ -77,6 +81,11 @@ export function Navbar() {
                   {category.name}{" "}
                 </Link>
               ))}
+            </div>
+          )}
+          {!scrollCheck && isMobile && (
+            <div className="flex gap-3">
+              <Dropdown options={category} />
             </div>
           )}
         </div>

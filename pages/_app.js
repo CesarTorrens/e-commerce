@@ -22,9 +22,12 @@ function MyApp({ Component, pageProps }) {
   const [pagination, setPagination] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
   const [oldId, setOldId] = React.useState(null);
+  const [product, setProduct] = React.useState({})
   
   const router = useRouter();
   const id = router.query.categoryId;
+  const productId = router.query.productId;
+  const idCategoryProduct = product?.category?.id
   const callUser = React.useCallback(async () => {
     const { data } = await api(`users`);
     try {
@@ -80,7 +83,24 @@ function MyApp({ Component, pageProps }) {
     } catch (error) {
       console.log(error);
     }
-  }, [id, pagination]);
+  }, [id, pagination, oldId]);
+  const callCategoryInProduct = React.useCallback(async () => {
+    const { data } = await api(`categories/${idCategoryProduct}/products?offset=0&limit=10`);
+    try {      
+      setCategoryProducts(data)      
+    } catch (error) {
+      console.log(error);
+    }
+  }, [idCategoryProduct]);
+
+  const callProduct = React.useCallback(async () => {
+    const { data } = await api(`products/${productId}`);
+    try {
+      setProduct(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }, [productId])
 
   const showCart = () => setOpenCart(!openCart);
 
@@ -125,6 +145,9 @@ function MyApp({ Component, pageProps }) {
         cart,
         totalPayment,
         removeProduct,
+        callProduct,
+        product,
+        callCategoryInProduct
       }}
     >
       <Layout>
