@@ -9,7 +9,7 @@ export function ProductCard(props) {
   const [quantity, setQuantity] = React.useState(1);
 
   return (
-    <div className="bg-white rounded-lg relative  hover:scale-105 transition duration-300">
+    <div className="bg-white rounded-lg relative  lg:hover:scale-105 transition duration-300">
       <span className="absolute bg-slate-600 py-1 px-2 rounded-xl right-2 top-2 text-white font-semibold">
         {category}
       </span>

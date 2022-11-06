@@ -7,7 +7,7 @@ export function CategoryCard({ title, img, id }) {
   return (
     <>
       <Link href={`/categories/${id}`}>
-        <div className="relative rounded-md w-full h-auto shadow-xl hover:scale-105 transition duration-300">
+        <div className="relative rounded-md w-52 md:w-full h-auto shadow-xl lg:hover:scale-105 transition duration-300">
           <span className="absolute bottom-6 z-20 w-full text-center text-white font-bold text-3xl">
             {title}
           </span>
