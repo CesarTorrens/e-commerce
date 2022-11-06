@@ -42,7 +42,6 @@ export function Navbar() {
       calculateScrollTop();
     });
   }, [scrollCheck]);
-  console.log(isMobile);
   return (
     <div className="w-full bg-slate-800 fixed z-40">
       <header className="py-5 px-3 sm:px-10 max-w-screen-2xl m-auto flex flex-col justify-between">

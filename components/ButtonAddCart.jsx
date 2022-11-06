@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import MyContext from "../context/MyContext";
 
-export function ButtonAddCart({ product }) {
-  const { addToCart, quantity } = useContext(MyContext);
-  const onClick = () => addToCart(product);
+export function ButtonAddCart({ product, text, type }) {
+  const { addToCart, showAlert } = useContext(MyContext);
+  const onClick = () => {
+    addToCart(product);
+    showAlert(type, text, product.title);
+  };
   return (
     <button
       onClick={onClick}

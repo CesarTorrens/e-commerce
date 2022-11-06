@@ -28,7 +28,7 @@ export function Counter({ cant, setQuantity }) {
     setCount(1);
   };
   return (
-    <div className="flex w-full border border-slate-600/25 rounded-md justify-between items-center px-8 py-1">
+    <div className="bg-white flex w-full border border-slate-600/25 rounded-md justify-between items-center px-1 sm:px-8 lg:px-4 py-1">
       <button
         onClick={minCount}
         className="text-red-600 font-medium rounded-full hover:bg-slate-100 transition duration-300 p-1"
@@ -36,19 +36,21 @@ export function Counter({ cant, setQuantity }) {
         Min
       </button>
       <button
-        disabled={count < 2}
+        disabled={count < 2 || cant === 0}
         onClick={subtract}
         className="rounded-full hover:bg-slate-100 transition duration-300 p-1"
       >
-        <SubstractIcon color={count < 2 ? "gray" : "red"} />
+        <SubstractIcon color={count < 2 || cant === 0 ? "gray" : "red"} />
       </button>
-      <span className="text-xl font-semibold text-slate-600">{count}</span>
+      <span className="text-xl font-semibold text-slate-600">
+        {cant > 0 ? count : "0"}
+      </span>
       <button
-        disabled={count === max}
+        disabled={count === max || cant === 0}
         onClick={add}
         className="rounded-full hover:bg-slate-100 transition duration-300 p-1"
       >
-        <AddIcon color={count === max ? "gray" : "green"} />
+        <AddIcon color={count === max || cant === 0 ? "gray" : "green"} />
       </button>
       <button
         onClick={maxCount}

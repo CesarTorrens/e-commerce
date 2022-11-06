@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { ButtonAddCart } from "./ButtonAddCart";
 import { Counter } from "./Counter";
-import MyContext from "../context/MyContext";
 
 export function ProductCard(props) {
   const { img, price, title, category, id, categoryId, categoryImg, cant } =
@@ -10,7 +9,7 @@ export function ProductCard(props) {
   const [quantity, setQuantity] = React.useState(1);
 
   return (
-    <div className="bg-white rounded-lg relative shadow-2xl shadow-slate-800 hover:scale-105 transition duration-300">
+    <div className="bg-white rounded-lg relative  hover:scale-105 transition duration-300">
       <span className="absolute bg-slate-600 py-1 px-2 rounded-xl right-2 top-2 text-white font-semibold">
         {category}
       </span>
@@ -25,7 +24,7 @@ export function ProductCard(props) {
           )}
         </div>
         {!img && (
-          <div className="h-60 flex items-center justify-center bg-slate-800 rounded-b-xl">
+          <div className="h-56 flex items-center justify-center bg-slate-800 rounded-b-xl">
             <span className="text-3xl text-white font-bold">Image Empty</span>
           </div>
         )}
@@ -36,35 +35,57 @@ export function ProductCard(props) {
       </Link>
       <div className="px-2 pt-1">
         <div className="w-full flex items-center justify-between h-6">
-          <span className="text-xs italic text-slate-800">
-            {" "}
-            Quedan <b>{cant}</b> productos disponibles
-          </span>
-          <span
-            className={
-              quantity === 1 ? "hidden" : "font-semibold text-slate-800"
-            }
-          >
-            ${quantity * price}
-          </span>
+          {cant > 0 && (
+            <span className="text-xs italic text-slate-800">
+              {" "}
+              In stock <b>{cant}</b> products available
+            </span>
+          )}
+          {cant === 0 && (
+            <span className="text-xs italic text-slate-800">
+              {" "}
+              No products available
+            </span>
+          )}
+          {cant > 0 && (
+            <span
+              className={
+                quantity === 1 ? "hidden" : "font-semibold text-slate-800"
+              }
+            >
+              ${quantity * price}
+            </span>
+          )}
         </div>
 
         <Counter setQuantity={setQuantity} cant={cant} />
       </div>
+
       <div className="px-2 py-4">
-        <ButtonAddCart
-          product={{
-            img,
-            price,
-            title,
-            category,
-            id,
-            categoryId,
-            categoryImg,
-            cant,
-            quantity,
-          }}
-        />
+        {cant === 0 && (
+          <div className="w-full flex justify-center bg-gray-500 rounded-lg  py-1">
+            <span className="text-xl w-full text-center text-white">
+              No disponible
+            </span>
+          </div>
+        )}
+        {cant > 0 && (
+          <ButtonAddCart
+            product={{
+              img,
+              price,
+              title,
+              category,
+              id,
+              categoryId,
+              categoryImg,
+              cant,
+              quantity,
+            }}
+            type="success"
+            text="Item added to cart."
+          />
+        )}
       </div>
     </div>
   );

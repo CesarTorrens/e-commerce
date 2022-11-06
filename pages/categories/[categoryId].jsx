@@ -26,13 +26,14 @@ export default function CategoryId() {
         {categoryProducts[0]?.category.name}
       </h2>
       <section className="grid grid-cols-gridCard gap-4">
-        {categoryProducts?.map((product) => (
+        {categoryProducts?.map((product, index) => (
           <ProductCard
-            key={product.id}
+            key={`${product.id}-${index}`}
             id={product.id}
             img={product.images[0]}
             price={product.price}
             title={product.title}
+            cant={product.cant}
             category={product.category.name}
           />
         ))}

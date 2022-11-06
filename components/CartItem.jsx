@@ -45,7 +45,7 @@ export default function CartItem({
         </div>
         <div className="flex flex-1 items-end justify-between text-sm">
           <Link
-            href="/"
+            href={`/product-detail/${id}`}
             className="text-blue-500 hover:underline transition duration-300"
           >
             See details

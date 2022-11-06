@@ -1,6 +1,5 @@
 import Link from "next/link";
-import React, { useContext } from "react";
-import MyContext from "../context/MyContext";
+import React from "react";
 import { ArrowDrop } from "./icons/ArrowDrop";
 
 export default function Dropdown({ options }) {
@@ -26,13 +25,13 @@ export default function Dropdown({ options }) {
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
-          tabindex="-1"
+          tabIndex="-1"
         >
           <div className="py-1 flex flex-col" role="none">
             {/* <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> */}
             {options?.map((category) => (
               <Link
-                classNameName="text-slate-800 hover:opacity-75 transition duration-300 w-full text-sm px-4 py-2 hover:bg-gray-100"
+                className="text-slate-800 hover:opacity-75 transition duration-300 w-full text-sm px-4 py-2 hover:bg-gray-100"
                 href={`/categories/${category.id}`}
                 key={category.id}
               >
