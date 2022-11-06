@@ -4,6 +4,7 @@ import { CategoryCard } from "./CategoryCard";
 
 export function CategoryButtons() {
   const { category } = useContext(MyContext);
+  console.log(category);
   return (
     <>
       <h2 className="text-slate-200 text-4xl font-bold mb-5">Categories</h2>

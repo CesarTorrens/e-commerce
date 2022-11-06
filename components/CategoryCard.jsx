@@ -3,10 +3,11 @@ import React, { useContext } from "react";
 import MyContext from "../context/MyContext";
 
 export function CategoryCard({ title, img, id }) {
+  console.log(title);
   return (
     <>
       <Link href={`/categories/${id}`}>
-        <div className="relative rounded-md w-full h-20 shadow-xl hover:scale-105 transition duration-300">
+        <div className="relative rounded-md w-full h-auto shadow-xl hover:scale-105 transition duration-300">
           <span className="absolute bottom-6 z-20 w-full text-center text-white font-bold text-3xl">
             {title}
           </span>
