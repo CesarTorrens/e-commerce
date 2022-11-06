@@ -29,7 +29,9 @@ export function ProductCard(props) {
           </div>
         )}
         <div className="pt-4 px-2">
-          <h3 className="text-sm text-gray-700">{title}</h3>
+          <h3 className="text-sm text-gray-700 truncate w-36 sm:w-full">
+            {title}
+          </h3>
           <p className="mt-1 text-lg font-medium text-gray-900">$ {price}</p>
         </div>
       </Link>
