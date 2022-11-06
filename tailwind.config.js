@@ -12,7 +12,9 @@ module.exports = {
     minHeight: {
       'mainCalc': 'calc(100vh - 160px)',
     },
-    
+    minWidth: {
+      'card': '240px',
+    },    
     extend: {
       gridTemplateColumns: {
         'gridCard': 'repeat(auto-fill, minmax(260px, 1fr))',

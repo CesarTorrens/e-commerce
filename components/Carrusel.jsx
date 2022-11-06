@@ -24,7 +24,7 @@ export default class Carrusel extends Component {
           },
         },
         {
-          breakpoint: 900,
+          breakpoint: 1000,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
@@ -32,7 +32,7 @@ export default class Carrusel extends Component {
           },
         },
         {
-          breakpoint: 750,
+          breakpoint: 850,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,

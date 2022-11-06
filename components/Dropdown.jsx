@@ -21,7 +21,7 @@ export default function Dropdown({ options }) {
 
       {open && (
         <div
-          className="absolute -right-11 z-10 mt-2 w-40 rounded-md bg-white shadow-2xl"
+          className="absolute -right-11 z-10 mt-2 w-40 rounded-md bg-white shadow-2xl max-h-72 overflow-auto"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"

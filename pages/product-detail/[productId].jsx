@@ -77,7 +77,10 @@ export default function ProductDetail() {
             <div className="flex gap-4">
               {product?.images?.map((image, index) => (
                 <button
-                  className="border border-white"
+                  className={
+                    img === image &&
+                    "border border-solid border-white rounded-xl"
+                  }
                   onClick={() => changeImg(image)}
                   key={index}
                 >
@@ -124,7 +127,10 @@ export default function ProductDetail() {
             <div className="flex gap-4">
               {product?.images?.map((image, index) => (
                 <button
-                  className=""
+                  className={
+                    img === image &&
+                    "border border-solid border-white rounded-xl"
+                  }
                   onClick={() => changeImg(image)}
                   key={index}
                 >
@@ -152,9 +158,9 @@ export default function ProductDetail() {
       )}
       {isMobile && categoryProducts.length > 0 && (
         <>
-          <div className="flex overflow-auto pb-5">
+          <div className="flex overflow-auto py-5 gap-2 w-full">
             {categoryProducts.map((product) => (
-              <div className="pr-2" key={product.id}>
+              <div className="min-w-card" key={product.id}>
                 <ProductCard
                   id={product.id}
                   img={product.images[0]}
@@ -170,9 +176,9 @@ export default function ProductDetail() {
       )}
       {!categoryProducts.length > 0 && isMobile && (
         <>
-          <div className="flex overflow-auto pb-5">
+          <div className="flex overflow-auto py-5 gap-2 w-full">
             {products.map((product) => (
-              <div className="pr-2" key={product.id}>
+              <div className="min-w-card" key={product.id}>
                 <ProductCard
                   id={product.id}
                   img={product.images[0]}
